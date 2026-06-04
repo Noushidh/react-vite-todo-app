@@ -1,39 +1,65 @@
 import {useState } from "react";
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
 
 function Todo() {
 
   type Todoitem ={
     text:string,
     deadline:string,
+    completed:boolean
   }
+  const notyf = new Notyf({position:{x:'center',y:'top'}});
+
     const [newTodo,setNewTodo] = useState('')
     const [todos,setTodos] = useState<Todoitem[]>([])
     const [deadline,setDeadline] = useState('')
     const [editIndex,setEditIndex] = useState<number|null>(null)
 
     const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) =>{
-       if(e.key === 'Enter' && newTodo.trim() && deadline){
+       
         const todo:Todoitem={
           text:newTodo,
           deadline:deadline,
+          completed:false
         }
-        
+          if (e.key !== "Enter") return;
+
+          if (!newTodo.trim()) {
+          notyf.error("Please enter a task");
+          return;
+          }
+
+          if (!deadline) {
+          notyf.error("Please select a deadline");
+          return;
+          }
+
         if(editIndex!==null){
            const updatedTodos = [...todos]
            updatedTodos[editIndex]=todo
            setTodos(updatedTodos)
            setEditIndex(null)
+           notyf.success('item edited successfully')
         }else{
           setTodos([...todos,todo])
+          notyf.success('item added successfully')
         }
-
         setNewTodo('')
         setDeadline('')
-       }
+       
     }
 
     const deleteTodo = (indexToDelete:number) =>{
          setTodos(todos.filter((_,index)=>index!==indexToDelete))
+         notyf.success('deleted successuly')
+    }
+
+    const editCheckBox = (index:number) =>{
+          const updatedTodos = [...todos];
+
+          updatedTodos[index].completed = !updatedTodos[index].completed
+          setTodos(updatedTodos)
     }
 
 
@@ -56,13 +82,15 @@ function Todo() {
 <ul className="flex flex-col gap-2">
   {todos.map((todo,index)=>(
       <li key={index} className="flex items-center gap-1"> 
-           <div className="border-4 text-white rounded-2xl border-white bg-[oklch(0.73_0.26_149.92)] w-75 h-25 shadow-2xl flex flex-col justify-center items-center">
+           <div className="relative border-4 text-white rounded-2xl border-white bg-[oklch(0.73_0.26_149.92)] w-75 h-25 shadow-2xl flex flex-col justify-center items-center">
+     {/* checkbox */}      
+            <input className="absolute top-4 left-3" type="checkbox" checked={todo.completed} onChange={()=> editCheckBox(index)}/>
      {/* Row 1 */}
             <div className="flex justify-center">
           <span className="text-lg">{todo.text}</span>
         </div>
     
-        {/* Row 2 */}
+      {/* Row 2 */}
           <div className="flex items-center justify-between mt-2">
           <small> 
              {new Date(todo.deadline).toLocaleString("en-IN", {
