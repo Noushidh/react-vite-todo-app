@@ -1,6 +1,7 @@
-import { useState } from "react";
+import {useState } from "react";
 
 function Todo() {
+
   type Todoitem ={
     text:string,
     deadline:string,
@@ -8,18 +9,34 @@ function Todo() {
     const [newTodo,setNewTodo] = useState('')
     const [todos,setTodos] = useState<Todoitem[]>([])
     const [deadline,setDeadline] = useState('')
+    const [editIndex,setEditIndex] = useState<number|null>(null)
 
     const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) =>{
-       if(e.key === 'Enter' && newTodo.trim()){
+       if(e.key === 'Enter' && newTodo.trim() && deadline){
         const todo:Todoitem={
           text:newTodo,
           deadline:deadline,
         }
-        setTodos([...todos,todo])
+        
+        if(editIndex!==null){
+           const updatedTodos = [...todos]
+           updatedTodos[editIndex]=todo
+           setTodos(updatedTodos)
+           setEditIndex(null)
+        }else{
+          setTodos([...todos,todo])
+        }
+
         setNewTodo('')
         setDeadline('')
        }
     }
+
+    const deleteTodo = (indexToDelete:number) =>{
+         setTodos(todos.filter((_,index)=>index!==indexToDelete))
+    }
+
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center gap-10">
       <div className= "border-4 border-green-100 bg-[oklch(0.73_0.26_149.92)] w-100 h-40 rounded-2xl shadow-2xl flex flex-col justify-center items-center">
@@ -58,8 +75,19 @@ function Todo() {
           </small>
 
       <div className="flex gap-2">
-     <button className="flex text-green-400 items-center bg-white w-15 border-3  border-green-500 rounded-2xl justify-center">edit</button>
-     <button className="bg-black/60 rounded-2xl w-10 border-3"><i className="fas fa-trash"></i></button>
+     <button className="flex cursor-pointer hover:bg-black/50 hover:text-white text-green-400 items-center bg-white w-15 border-3  border-green-500 rounded-2xl justify-center"
+        onClick={()=>{
+          setNewTodo(todo.text)
+          setDeadline(todo.deadline)
+          setEditIndex(index)
+        }
+        }>
+       edit
+      </button>
+      <button className="bg-black/60 cursor-pointer rounded-2xl w-10 border-3"
+        onClick={()=>deleteTodo(index)}>
+        <i className="fas fa-trash"></i>
+      </button>
               </div>
           </div>
       </div>
