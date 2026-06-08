@@ -1,73 +1,96 @@
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Vite](https://img.shields.io/badge/Vite-Latest-purple)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4)
+
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Todo App
+A modern and responsive Todo Application built with React, TypeScript, Vite, and Tailwind CSS. This project helps users manage daily tasks efficiently with features like adding, editing, deleting, and marking tasks as completed.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+👉 https://react-vite-todo-app-two.vercel.app/
 
-## React Compiler
+## 📸 Screenshot
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Todo App Screenshot](./src/assets/todo-app.png)
 
-## Expanding the ESLint configuration
+## 📌 Features
+✅ Add new tasks
+✏️ Edit existing tasks
+🗑️ Delete tasks
+✔️ Mark tasks as completed
+🔔 Success and error notifications using Notyf
+📱 Responsive design for mobile and desktop
+⚡ Fast performance with Vite
+🎨 Styled using Tailwind CSS
+🔒 Type safety with TypeScript
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Notyf
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📦 Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Clone the repository:
+git clone https://github.com/Noushidh/react-vite-todo-app.git
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Navigate to the project folder:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+cd react-vite-todo-app
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+🏗️ Production Build
+npm run build
+
+## 📁 Project Structure
+
+src/
+├── assets/
+│   └── todo-app.png
+├── components/
+│   └── TodoApp/
+│       └── TodoApp.tsx
+├── App.tsx
+├── main.tsx
+├── index.css
+
+public/
+
+package.json
+vite.config.ts
+tsconfig.json
+README.md
+
+## 🎯 Learning Outcomes
+
+Through this project, I practiced:
+
+React component architecture
+TypeScript type safety
+State management using React Hooks
+CRUD operations
+Responsive UI design with Tailwind CSS
+Notification handling using Notyf
+Deploying applications with Vercel
+
+## 👨‍💻 Author
+Noushidh K
+
+GitHub: https://github.com/Noushidh
+
+## ⭐ Support
+If you found this project useful, consider giving it a star ⭐ on GitHub.
+
