@@ -17,15 +17,16 @@ A modern and responsive Todo Application built with React, TypeScript, Vite, and
 ![Todo App Screenshot](./src/assets/todo-app.png)
 
 ## 📌 Features
-✅ Add new tasks
-✏️ Edit existing tasks
-🗑️ Delete tasks
-✔️ Mark tasks as completed
-🔔 Success and error notifications using Notyf
-📱 Responsive design for mobile and desktop
-⚡ Fast performance with Vite
-🎨 Styled using Tailwind CSS
-🔒 Type safety with TypeScript
+
+- ✅ Add new tasks
+- ✏️ Edit existing tasks
+- 🗑️ Delete tasks
+- ✔️ Mark tasks as completed
+- 🔔 Success and error notifications using Notyf
+- 📱 Responsive design for mobile and desktop
+- ⚡ Fast performance with Vite
+- 🎨 Styled using Tailwind CSS
+- 🔒 Type safety with TypeScript
 
 ## 🛠️ Tech Stack
 
@@ -57,6 +58,7 @@ npm run build
 
 ## 📁 Project Structure
 
+```text
 src/
 ├── assets/
 │   └── todo-app.png
@@ -73,6 +75,7 @@ package.json
 vite.config.ts
 tsconfig.json
 README.md
+```
 
 ## 🎯 Learning Outcomes
 
